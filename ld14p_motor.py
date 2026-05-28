@@ -110,7 +110,7 @@ def main():
         if args.action == "stop":
             ser.write(build_command(CMD_STOP))
             ser.flush()
-            time.sleep(0.5)
+            time.sleep(1.5)
             ser.reset_input_buffer()
             hz = measure_scan_hz(ser, 1.0)
             print("Stopped." if hz is None else f"Still spinning at {hz:.2f} Hz - retry?")
@@ -119,7 +119,7 @@ def main():
         if args.action == "start":
             ser.write(build_command(CMD_START))
             ser.flush()
-            time.sleep(0.8)
+            time.sleep(1.0)
             hz = measure_scan_hz(ser, 1.5)
             print(f"Started - spinning at {hz:.2f} Hz." if hz else
                   "Sent start, but no data yet. Check the pin-8 (Pi TX -> LiDAR RX) wire.")
